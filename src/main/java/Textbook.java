@@ -20,13 +20,13 @@ public class Textbook {
         } else return false;
     }
     public boolean changeAdress(String name, Adress Adress) {
-        if (all.containsKey(name) && Adress != all.get(name)) {
+        if (all.containsKey(name) && !Adress.equals(all.get(name))) {
             all.put(name, Adress);
             return true;
         } else return false;
     }
-    public void getAdress(String name) {
-        all.get(name);
+    public Adress getAdress(String name) {
+        return all.get(name);
     }
     public Set<String> findPersons(String Street) {
         Set<String> list = new HashSet<String>();
