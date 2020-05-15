@@ -1,16 +1,13 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Textbook {
-    public Map<String, Adress> all = new HashMap<String, Adress>();
-    public Map<String, Adress> getAll() {
-        return new HashMap<String, Adress>(all);
+    public Map<String, Address> all = new HashMap<>();
+    public Map<String, Address> getAll() {
+        return new HashMap<>(all);
     }
-    public boolean addHuman(String name, Adress Adress) {
+    public boolean addHuman(String name, Address address) {
         if (all.containsKey(name)) return false;
-        else all.put(name, Adress);
+        else all.put(name, address);
         return true;
     }
     public boolean deleteHuman(String name) {
@@ -19,30 +16,30 @@ public class Textbook {
             return true;
         } else return false;
     }
-    public boolean changeAdress(String name, Adress Adress) {
-        if (all.containsKey(name) && !Adress.equals(all.get(name))) {
-            all.put(name, Adress);
+    public boolean changeAddress(String name, Address address) {
+        if (all.containsKey(name) && !address.equals(all.get(name))) {
+            all.put(name, address);
             return true;
         } else return false;
     }
-    public Adress getAdress(String name) {
+    public Address getAddress(String name) {
         return all.get(name);
     }
-    public Set<String> findPersons(String Street) {
-        Set<String> list = new HashSet<String>();
-        for (Map.Entry<String, Adress> entry: all.entrySet()) {
-            if (entry.getValue().getStreet().equals(Street))
-                list.add(entry.getKey());
+    public ArrayList<String> findPersons(String street) {
+        ArrayList<String> listOfPersons = new ArrayList<>();
+        for (Map.Entry<String, Address> entry: all.entrySet()) {
+            if (entry.getValue().getStreet().equals(street))
+                listOfPersons.add(entry.getKey());
         }
-        return list;
+        return listOfPersons;
     }
-    public Set<String> findPersons(String Street, int house) {
-        Set<String> list = new HashSet<String>();
-        for (Map.Entry<String, Adress> entry: all.entrySet()) {
-            if (entry.getValue().getStreet().equals(Street) && entry.getValue().getNumOfHouse() == house)
-                list.add(entry.getKey());
+    public ArrayList<String> findPersons(String street, int house) {
+        ArrayList<String> listOfPersons = new ArrayList<>();
+        for (Map.Entry<String, Address> entry: all.entrySet()) {
+            if (entry.getValue().getStreet().equals(street) && entry.getValue().getNumOfHouse() == house)
+                listOfPersons.add(entry.getKey());
         }
-        return list;
+        return listOfPersons;
     }
 
 }
